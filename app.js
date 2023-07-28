@@ -10,19 +10,17 @@ import monk from "monk";
 // Clean
 import usersRouter from "./routes/users";
 import placeRouter from "./routes/place";
+import typeOfMediaRouter from "./routes/typeOfMedia";
 
 // To clean
 import carDepotRouter from "./routes/carDepot";
 import carRouter from "./routes/car";
-import expensesRouter from "./routes/expenses";
 import chargeDetailRouter from "./routes/chargeDetail";
 import carReceptionRouter from "./routes/carReception";
 import carRepairRouter from "./routes/carRepair";
 import carProblemRouter from "./routes/carProblem";
 import invoiceRouter from "./routes/invoice";
 import sendMailRouter from "./routes/sendMail";
-
-
 
 require("dotenv").config();
 //var db = monk("localhost:27017/garage");
@@ -49,11 +47,11 @@ app.use(function (req, res, next) {
 // Clean
 app.use("/user", usersRouter);
 app.use("/place", placeRouter);
+app.use("/typeOfMedia", typeOfMediaRouter);
 
 // To clean
 app.use("/car", carRouter);
 app.use("/carDepot", carDepotRouter);
-app.use("/expenses", expensesRouter);
 app.use("/chargeDetail", chargeDetailRouter);
 app.use("/carReception", carReceptionRouter);
 app.use("/carRepair", carRepairRouter);
