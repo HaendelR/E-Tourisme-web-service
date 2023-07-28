@@ -14,11 +14,11 @@ import typeOfMediaRouter from "./routes/typeOfMedia";
 import activtyRouter from "./routes/activity";
 import activityTouristicSiteRouter from "./routes/activityTouristicSite";
 import touristicSiteRouter from "./routes/touristicSite";
+import mediaSiteRouter from "./routes/mediaSite";
 
 // To clean
 import chargeDetailRouter from "./routes/chargeDetail";
 import carRepairRouter from "./routes/carRepair";
-import carProblemRouter from "./routes/carProblem";
 import invoiceRouter from "./routes/invoice";
 import sendMailRouter from "./routes/sendMail";
 
@@ -51,11 +51,11 @@ app.use("/typeOfMedia", typeOfMediaRouter);
 app.use("/activity", activtyRouter);
 app.use("/activityTouristicSite", activityTouristicSiteRouter);
 app.use("/touristicSite", touristicSiteRouter);
+app.use("/mediaSite", mediaSiteRouter);
 
 // To clean
 app.use("/chargeDetail", chargeDetailRouter);
 app.use("/carRepair", carRepairRouter);
-app.use("/carProblem", carProblemRouter);
 app.use("/invoice", invoiceRouter);
 app.use("/sendMail", sendMailRouter);
 
