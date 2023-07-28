@@ -1,42 +1,44 @@
-var createError = require("http-errors");
+import createError from "http-errors";
+import express, { json, urlencoded } from "express";
+import { join } from "path";
+import cookieParser from "cookie-parser";
+import logger from "morgan";
+import cors from "cors";
+import mongo from "mongodb";
+import monk from "monk";
+
+// Clean
+import usersRouter from "./routes/users";
+import placeRouter from "./routes/place";
+
+// To clean
+import carDepotRouter from "./routes/carDepot";
+import carRouter from "./routes/car";
+import expensesRouter from "./routes/expenses";
+import chargeDetailRouter from "./routes/chargeDetail";
+import carReceptionRouter from "./routes/carReception";
+import carRepairRouter from "./routes/carRepair";
+import carProblemRouter from "./routes/carProblem";
+import invoiceRouter from "./routes/invoice";
+import sendMailRouter from "./routes/sendMail";
+
+
+
 require("dotenv").config();
-var express = require("express");
-var path = require("path");
-var cookieParser = require("cookie-parser");
-var logger = require("morgan");
-
-const cors = require("cors");
-
-var mongo = require("mongodb");
-var monk = require("monk");
 //var db = monk("localhost:27017/garage");
 var db = monk(process.env.MONGO_DB_ATLAS);
 
 // var indexRouter = require('./routes/index');
-var usersRouter = require("./routes/users");
-var carDepotRouter = require("./routes/carDepot");
-var carRouter = require("./routes/car");
-var garageRouter = require("./routes/garage");
-var expensesRouter = require("./routes/expenses");
-var chargeDetailRouter = require("./routes/chargeDetail");
-var carReceptionRouter = require("./routes/carReception");
-var carRepairRouter = require("./routes/carRepair");
-var carProblemRouter = require("./routes/carProblem");
-var invoiceRouter = require("./routes/invoice");
-var sendMailRouter = require("./routes/sendMail");
-
 var app = express();
 app.set("port", process.env.PORT || 3000);
-
 // view engine setup
-app.set("views", path.join(__dirname, "views"));
+app.set("views", join(__dirname, "views"));
 app.set("view engine", "jade");
-
 app.use(logger("dev"));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(json());
+app.use(urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(express.static(path.join(__dirname, "public")));
+app.use(express.static(join(__dirname, "public")));
 app.use(cors());
 app.use(function (req, res, next) {
   req.db = db;
@@ -44,10 +46,13 @@ app.use(function (req, res, next) {
 });
 
 // app.use('/', indexRouter);
+// Clean
 app.use("/user", usersRouter);
+app.use("/place", placeRouter);
+
+// To clean
 app.use("/car", carRouter);
 app.use("/carDepot", carDepotRouter);
-app.use("/garage", garageRouter);
 app.use("/expenses", expensesRouter);
 app.use("/chargeDetail", chargeDetailRouter);
 app.use("/carReception", carReceptionRouter);
@@ -72,4 +77,4 @@ app.use(function (err, req, res, next) {
   res.render("error");
 });
 
-module.exports = app;
+export default app;
