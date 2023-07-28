@@ -16,9 +16,9 @@ import activityTouristicSiteRouter from "./routes/activityTouristicSite";
 import touristicSiteRouter from "./routes/touristicSite";
 import mediaSiteRouter from "./routes/mediaSite";
 import commentRouter from "./routes/comment";
+import commentReplyRouter from "./routes/commentReply";
 
 // To clean
-import carRepairRouter from "./routes/carRepair";
 import invoiceRouter from "./routes/invoice";
 import sendMailRouter from "./routes/sendMail";
 
@@ -53,9 +53,9 @@ app.use("/activityTouristicSite", activityTouristicSiteRouter);
 app.use("/touristicSite", touristicSiteRouter);
 app.use("/mediaSite", mediaSiteRouter);
 app.use("/comment", commentRouter);
+app.use("/commentReply", commentReplyRouter);
 
 // To clean
-app.use("/carRepair", carRepairRouter);
 app.use("/invoice", invoiceRouter);
 app.use("/sendMail", sendMailRouter);
 
