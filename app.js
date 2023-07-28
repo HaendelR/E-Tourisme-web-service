@@ -11,12 +11,12 @@ import monk from "monk";
 import usersRouter from "./routes/users";
 import placeRouter from "./routes/place";
 import typeOfMediaRouter from "./routes/typeOfMedia";
+import activtyRouter from "./routes/activity";
 
 // To clean
 import carDepotRouter from "./routes/carDepot";
 import carRouter from "./routes/car";
 import chargeDetailRouter from "./routes/chargeDetail";
-import carReceptionRouter from "./routes/carReception";
 import carRepairRouter from "./routes/carRepair";
 import carProblemRouter from "./routes/carProblem";
 import invoiceRouter from "./routes/invoice";
@@ -48,12 +48,12 @@ app.use(function (req, res, next) {
 app.use("/user", usersRouter);
 app.use("/place", placeRouter);
 app.use("/typeOfMedia", typeOfMediaRouter);
+app.use("/activty", activtyRouter);
 
 // To clean
 app.use("/car", carRouter);
 app.use("/carDepot", carDepotRouter);
 app.use("/chargeDetail", chargeDetailRouter);
-app.use("/carReception", carReceptionRouter);
 app.use("/carRepair", carRepairRouter);
 app.use("/carProblem", carProblemRouter);
 app.use("/invoice", invoiceRouter);
