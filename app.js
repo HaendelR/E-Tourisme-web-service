@@ -12,10 +12,10 @@ import usersRouter from "./routes/users";
 import placeRouter from "./routes/place";
 import typeOfMediaRouter from "./routes/typeOfMedia";
 import activtyRouter from "./routes/activity";
+import activityTouristicSiteRouter from "./routes/activityTouristicSite";
+import touristicSiteRouter from "./routes/touristicSite";
 
 // To clean
-import carDepotRouter from "./routes/carDepot";
-import carRouter from "./routes/car";
 import chargeDetailRouter from "./routes/chargeDetail";
 import carRepairRouter from "./routes/carRepair";
 import carProblemRouter from "./routes/carProblem";
@@ -48,11 +48,11 @@ app.use(function (req, res, next) {
 app.use("/user", usersRouter);
 app.use("/place", placeRouter);
 app.use("/typeOfMedia", typeOfMediaRouter);
-app.use("/activty", activtyRouter);
+app.use("/activity", activtyRouter);
+app.use("/activityTouristicSite", activityTouristicSiteRouter);
+app.use("/touristicSite", touristicSiteRouter);
 
 // To clean
-app.use("/car", carRouter);
-app.use("/carDepot", carDepotRouter);
 app.use("/chargeDetail", chargeDetailRouter);
 app.use("/carRepair", carRepairRouter);
 app.use("/carProblem", carProblemRouter);
