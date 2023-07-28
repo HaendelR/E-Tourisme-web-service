@@ -18,9 +18,9 @@ import mediaSiteRouter from "./routes/mediaSite";
 import commentRouter from "./routes/comment";
 import commentReplyRouter from "./routes/commentReply";
 import notificationRouter from "./routes/notification";
+import programRouter from "./routes/program";
 
-// To clean
-import invoiceRouter from "./routes/invoice";
+// To clean if not used
 import sendMailRouter from "./routes/sendMail";
 
 require("dotenv").config();
@@ -56,9 +56,9 @@ app.use("/mediaSite", mediaSiteRouter);
 app.use("/comment", commentRouter);
 app.use("/commentReply", commentReplyRouter);
 app.use("/notification", notificationRouter);
+app.use("/program", programRouter);
 
-// To clean
-app.use("/invoice", invoiceRouter);
+// To clean if not used
 app.use("/sendMail", sendMailRouter);
 
 // catch 404 and forward to error handler
