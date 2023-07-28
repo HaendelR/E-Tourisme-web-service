@@ -17,6 +17,7 @@ import touristicSiteRouter from "./routes/touristicSite";
 import mediaSiteRouter from "./routes/mediaSite";
 import commentRouter from "./routes/comment";
 import commentReplyRouter from "./routes/commentReply";
+import notificationRouter from "./routes/notification";
 
 // To clean
 import invoiceRouter from "./routes/invoice";
@@ -54,6 +55,7 @@ app.use("/touristicSite", touristicSiteRouter);
 app.use("/mediaSite", mediaSiteRouter);
 app.use("/comment", commentRouter);
 app.use("/commentReply", commentReplyRouter);
+app.use("/notification", notificationRouter);
 
 // To clean
 app.use("/invoice", invoiceRouter);
