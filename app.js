@@ -1,27 +1,28 @@
-import createError from "http-errors";
-import express, { json, urlencoded } from "express";
-import { join } from "path";
-import cookieParser from "cookie-parser";
-import logger from "morgan";
-import cors from "cors";
-import mongo from "mongodb";
-import monk from "monk";
+const createError = require("http-errors");
+const express = require("express");
+const { json, urlencoded } = require("express");
+const { join } = require("path");
+const cookieParser = require("cookie-parser");
+const logger = require("morgan");
+const cors = require("cors");
+const mongo = require("mongodb");
+const monk = require("monk");
 
 // Clean
-import usersRouter from "./routes/users";
-import placeRouter from "./routes/place";
-import typeOfMediaRouter from "./routes/typeOfMedia";
-import activtyRouter from "./routes/activity";
-import activityTouristicSiteRouter from "./routes/activityTouristicSite";
-import touristicSiteRouter from "./routes/touristicSite";
-import mediaSiteRouter from "./routes/mediaSite";
-import commentRouter from "./routes/comment";
-import commentReplyRouter from "./routes/commentReply";
-import notificationRouter from "./routes/notification";
-import programRouter from "./routes/program";
+const usersRouter = require("./routes/users");
+const placeRouter = require("./routes/place");
+const typeOfMediaRouter = require("./routes/typeOfMedia");
+const activtyRouter = require("./routes/activity");
+const activityTouristicSiteRouter = require("./routes/activityTouristicSite");
+const touristicSiteRouter = require("./routes/touristicSite");
+const mediaSiteRouter = require("./routes/mediaSite");
+const commentRouter = require("./routes/comment");
+const commentReplyRouter = require("./routes/commentReply");
+const notificationRouter = require("./routes/notification");
+const programRouter = require("./routes/program");
 
 // To clean if not used
-import sendMailRouter from "./routes/sendMail";
+// import sendMailRouter from "./routes/sendMail";
 
 require("dotenv").config();
 //var db = monk("localhost:27017/garage");
@@ -59,7 +60,7 @@ app.use("/notification", notificationRouter);
 app.use("/program", programRouter);
 
 // To clean if not used
-app.use("/sendMail", sendMailRouter);
+// app.use("/sendMail", sendMailRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -77,4 +78,4 @@ app.use(function (err, req, res, next) {
   res.render("error");
 });
 
-export default app;
+module.exports = app;
