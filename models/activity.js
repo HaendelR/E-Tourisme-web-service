@@ -1,15 +1,15 @@
 var collections = "activity";
 
-export function getAllActivity(req, res) {
+exports.getAllActivity = function (req, res) {
   var db = req.db;
   var collection = db.get(collections);
 
   collection.find({}, {}, function (e, docs) {
     res.status(200).json(docs);
   });
-}
+};
 
-export async function insertActivity(req, res) {
+exports.insertActivity = async function (req, res) {
   try {
     var activity = {
       entitled: req.body.entitled,
@@ -32,4 +32,4 @@ export async function insertActivity(req, res) {
   } catch (error) {
     res.status(400).json({ error });
   }
-}
+};

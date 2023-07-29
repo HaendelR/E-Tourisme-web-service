@@ -1,11 +1,10 @@
-import { Router } from "express";
-import {
+var express = require("express");
+var router = express.Router();
+const {
   getAllTouristicSite,
   insertTouristicSite,
   getTouristicSite,
-} from "../models/touristicSite";
-
-var router = Router();
+} = require("../models/touristicSite");
 
 router.get("/allTouristicSite", function (req, res) {
   getAllTouristicSite(req, res);
@@ -23,4 +22,4 @@ router.get("/touristicSite/:touristicSiteName", async function (req, res) {
 //   updateStatusCarDepot(req, res);
 // });
 
-export default router;
+module.exports = router;

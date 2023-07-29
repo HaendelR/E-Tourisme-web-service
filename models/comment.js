@@ -1,6 +1,6 @@
 var collections = "comment";
 
-export async function insertComment(req, res) {
+exports.insertComment = async function (req, res) {
   try {
     var comment = {
       userName: req.body.userName,
@@ -20,9 +20,9 @@ export async function insertComment(req, res) {
   } catch (e) {
     res.status(400).json({ e });
   }
-}
+};
 
-export async function getAllCommentTouristicSite(req, res) {
+exports.getAllCommentTouristicSite = async function (req, res) {
   try {
     var db = req.db;
     var collection = db.get(collections);
@@ -39,4 +39,4 @@ export async function getAllCommentTouristicSite(req, res) {
   } catch (error) {
     res.status(400).json({ error });
   }
-}
+};

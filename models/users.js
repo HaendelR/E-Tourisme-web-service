@@ -1,18 +1,18 @@
-import { hash, compare } from "bcryptjs";
-import { sign, verify } from "jsonwebtoken";
+const { hash, compare } = require("bcryptjs");
+const { sign, verify } = require("jsonwebtoken");
 
 var collections = "users";
 
-export function getusers(req, res) {
+exports.getusers = function (req, res) {
   var db = req.db;
   var collection = db.get(collections);
 
   collection.find({}, {}, function (e, docs) {
     res.status(200).json(docs);
   });
-}
+};
 
-export async function inscription(req, res) {
+exports.inscription = async function (req, res) {
   try {
     var db = req.db;
     var collection = db.get(collections);
@@ -56,9 +56,9 @@ export async function inscription(req, res) {
   } catch (error) {
     res.status(400).json({ error });
   }
-}
+};
 
-export async function login(req, res) {
+exports.login = async function (req, res) {
   try {
     var user = {
       username: req.body.username,
@@ -98,9 +98,9 @@ export async function login(req, res) {
   } catch (error) {
     res.status(400).json({ error });
   }
-}
+};
 
-export async function userconnecte(req, res) {
+exports.userconnecte = async function (req, res) {
   const head = req.headers.authorization;
 
   const token = head?.split(" ")[1];
@@ -113,7 +113,7 @@ export async function userconnecte(req, res) {
   } catch (e) {
     res.status(500).send({ message: "Invalid Token" });
   }
-}
+};
 
 // exports.getUserWhereGarage = async function (req, res) {
 //   try {

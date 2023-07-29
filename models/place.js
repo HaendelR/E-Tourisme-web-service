@@ -1,15 +1,15 @@
 var collections = "place";
 
-export function getAllPlace(req, res) {
+exports.getAllPlace = function (req, res) {
   var db = req.db;
   var collection = db.get(collections);
 
   collection.find({}, {}, function (e, docs) {
     res.status(200).json(docs);
   });
-}
+};
 
-export async function insertPlace(req, res) {
+exports.insertPlace = async function (req, res) {
   try {
     var place = {
       entitled: req.body.entitled,
@@ -32,4 +32,4 @@ export async function insertPlace(req, res) {
   } catch (error) {
     res.status(400).json({ error });
   }
-}
+};

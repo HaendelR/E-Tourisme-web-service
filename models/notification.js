@@ -1,6 +1,6 @@
 var collections = "notification";
 
-export async function insertNotification(req, res) {
+exports.insertNotification = async function (req, res) {
   try {
     var commentReply = {
       userCommentName: req.body.userCommentName,
@@ -27,7 +27,7 @@ export async function insertNotification(req, res) {
   } catch (error) {
     res.status(400).json({ error });
   }
-}
+};
 
 // export async function findCarRepairByStatusAndClient(req, res) {
 //   var db = req.db;

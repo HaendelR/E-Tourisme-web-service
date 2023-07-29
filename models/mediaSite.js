@@ -1,15 +1,15 @@
 var collections = "mediaSite";
 
-export function getAllMediaSite(req, res) {
+exports.getAllMediaSite = function (req, res) {
   var db = req.db;
   var collection = db.get(collections);
 
   collection.find({}, {}, function (e, docs) {
     res.status(200).json(docs);
   });
-}
+};
 
-export async function insertMediaSite(req, res) {
+exports.insertMediaSite = async function (req, res) {
   try {
     var mediaSite = {
       touristicSiteName: req.body.touristicSiteName,
@@ -35,4 +35,4 @@ export async function insertMediaSite(req, res) {
   } catch (error) {
     res.status(400).json({ error });
   }
-}
+};

@@ -2,7 +2,7 @@ var collections = "activityTouristicSite";
 
 var today = new Date();
 
-export function getActivityTouristicSite(req, res) {
+exports.getActivityTouristicSite = function (req, res) {
   var db = req.db;
   var collection = db.get(collections);
 
@@ -13,9 +13,9 @@ export function getActivityTouristicSite(req, res) {
       res.status(200).json(docs);
     }
   );
-}
+};
 
-export async function insertactivityTouristicSite(req, res) {
+exports.insertactivityTouristicSite = async function (req, res) {
   try {
     var activityTouristicSite = {
       activityTouristicSiteName: req.body.activityTouristicSite,
@@ -41,7 +41,7 @@ export async function insertactivityTouristicSite(req, res) {
   } catch (error) {
     res.status(400).json({ error });
   }
-}
+};
 
 // export async function findCar (req, res) {
 //   try {

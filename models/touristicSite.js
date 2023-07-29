@@ -1,15 +1,15 @@
 var collections = "touristicSite";
 
-export function getAllTouristicSite(req, res) {
+exports.getAllTouristicSite = function (req, res) {
   var db = req.db;
   var collection = db.get(collections);
 
   collection.find({}, {}, function (e, docs) {
     res.status(200).json(docs);
   });
-}
+};
 
-export async function insertTouristicSite(req, res) {
+exports.insertTouristicSite = async function (req, res) {
   try {
     var touristicSite = {
       placeName: req.body.placeName,
@@ -34,9 +34,9 @@ export async function insertTouristicSite(req, res) {
   } catch (error) {
     res.status(400).json({ error });
   }
-}
+};
 
-export async function getTouristicSite(req, res) {
+exports.getTouristicSite = async function (req, res) {
   try {
     var db = req.db;
     var collection = db.get(collections);
@@ -53,7 +53,7 @@ export async function getTouristicSite(req, res) {
   } catch (error) {
     res.status(400).json({ error });
   }
-}
+};
 
 // export async function updateStatusCarDepot(req, res) {
 //   try {

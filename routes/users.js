@@ -1,7 +1,11 @@
-import { Router } from "express";
-import { getusers, inscription, login, userconnecte } from "../models/users";
-
-var router = Router();
+var express = require("express");
+var router = express.Router();
+const {
+  getusers,
+  inscription,
+  login,
+  userconnecte,
+} = require("../models/users");
 
 router.get("/allusers", async function (req, res) {
   getusers(req, res);
@@ -23,4 +27,4 @@ router.get("/me", async function (req, res) {
 //   users.getUserWhereGarage(req, res);
 // })
 
-export default router;
+module.exports = router;

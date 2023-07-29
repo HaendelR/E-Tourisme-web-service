@@ -1,15 +1,15 @@
 var collections = "typeOfMedia";
 
-export function getAlltypeOfMedia(req, res) {
+exports.getAlltypeOfMedia = function (req, res) {
   var db = req.db;
   var collection = db.get(collections);
 
   collection.find({}, {}, function (e, docs) {
     res.status(200).json(docs);
   });
-}
+};
 
-export async function insertTypeOfMedia(req, res) {
+exports.insertTypeOfMedia = async function (req, res) {
   try {
     var typeOfMedia = {
       entitled: req.body.entitled,
@@ -32,4 +32,4 @@ export async function insertTypeOfMedia(req, res) {
   } catch (error) {
     res.status(400).json({ error });
   }
-}
+};

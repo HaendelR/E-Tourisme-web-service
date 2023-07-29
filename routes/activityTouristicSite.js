@@ -1,10 +1,9 @@
-import { Router } from "express";
-import {
+var express = require("express");
+var router = express.Router();
+const {
   getActivityTouristicSite,
   insertactivityTouristicSite,
-} from "../models/activityTouristicSite";
-
-var router = Router();
+} = require("../models/activityTouristicSite");
 
 router.get("/allActivityTouristicSite", function (req, res) {
   getActivityTouristicSite(req, res);
@@ -18,4 +17,4 @@ router.post("/addActivityTouristicSite", async function (req, res) {
 //   findCar(req, res);
 // });
 
-export default router;
+module.exports = router;

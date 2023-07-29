@@ -9,17 +9,17 @@ const mongo = require("mongodb");
 const monk = require("monk");
 
 // Clean
-const usersRouter = require("./routes/users");
-const placeRouter = require("./routes/place");
-const typeOfMediaRouter = require("./routes/typeOfMedia");
-const activtyRouter = require("./routes/activity");
-const activityTouristicSiteRouter = require("./routes/activityTouristicSite");
-const touristicSiteRouter = require("./routes/touristicSite");
-const mediaSiteRouter = require("./routes/mediaSite");
-const commentRouter = require("./routes/comment");
-const commentReplyRouter = require("./routes/commentReply");
-const notificationRouter = require("./routes/notification");
-const programRouter = require("./routes/program");
+const usersRouter = require("./routes/users.js");
+const placeRouter = require("./routes/place.js");
+const typeOfMediaRouter = require("./routes/typeOfMedia.js");
+const activtyRouter = require("./routes/activity.js");
+const activityTouristicSiteRouter = require("./routes/activityTouristicSite.js");
+const touristicSiteRouter = require("./routes/touristicSite.js");
+const mediaSiteRouter = require("./routes/mediaSite.js");
+const commentRouter = require("./routes/comment.js");
+const commentReplyRouter = require("./routes/commentReply.js");
+const notificationRouter = require("./routes/notification.js");
+const programRouter = require("./routes/program.js");
 
 // To clean if not used
 // import sendMailRouter from "./routes/sendMail";
