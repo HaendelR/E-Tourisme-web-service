@@ -20,7 +20,7 @@ exports.inscription = async function (req, res) {
     var user = {
       name: req.body.name,
       surname: req.body.surname,
-      genre: req.body.genre,
+      gender: req.body.gender,
       birthDate: req.body.birthDate,
       adress: req.body.adress,
       email: req.body.email,
@@ -34,23 +34,18 @@ exports.inscription = async function (req, res) {
       email: req.body.email,
     });
 
-    if (duplemail) {
-      res.status(400).json({ error: "email déjà utilisé" });
-    } else {
-      collection.insert(user, function (e, docs) {
-        res.json(docs);
-      });
-    }
-
     let duplusername = await collection.findOne({
       username: req.body.username,
     });
 
-    if (duplusername) {
+    if(duplemail) {
+      res.status(400).json({ error: "Email déjà utilisé" });
+    }
+    else if (duplusername) {
       res.status(400).json({ error: "Nom d'utilisateur déjà utilisé" });
     } else {
       collection.insert(user, function (e, docs) {
-        res.json(docs);
+        res.status(200).json(docs);
       });
     }
   } catch (error) {
@@ -75,7 +70,7 @@ exports.login = async function (req, res) {
             email: docs.email,
             name: docs.name,
             surname: docs.surname,
-            genre: docs.genre,
+            gender: docs.gender,
             contact: docs.contact,
             birthDate: docs.birthDate,
             adress: docs.adress,

@@ -29,19 +29,3 @@ exports.insertNotification = async function (req, res) {
   }
 };
 
-// export async function findCarRepairByStatusAndClient(req, res) {
-//   var db = req.db;
-//   var collection = db.get(collections);
-
-//   collection.find(
-//     {
-//       status: req.params.status,
-//       clientName: req.params.clientName,
-//       clientSurname: req.params.clientSurname,
-//     },
-//     {},
-//     function (e, docs) {
-//       res.status(200).json(docs);
-//     }
-//   );
-// }
