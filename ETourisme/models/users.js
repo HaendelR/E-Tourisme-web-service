@@ -45,7 +45,7 @@ exports.inscription = async function (req, res) {
       res.status(400).json({ error: "Nom d'utilisateur déjà utilisé" });
     } else {
       collection.insert(user, function (e, docs) {
-        res.status(200).json(docs);
+        res.status(200).json({ user: docs});
       });
     }
   } catch (error) {
