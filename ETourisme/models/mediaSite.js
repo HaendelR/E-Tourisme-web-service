@@ -1,3 +1,4 @@
+const fs = require('fs');
 var collections = "mediaSite";
 
 exports.getAllMediaSite = function (req, res) {
@@ -9,24 +10,37 @@ exports.getAllMediaSite = function (req, res) {
   });
 };
 
+
 exports.insertMediaSite = async function (req, res) {
+  var db = req.db;
+  var collection = db.get(collections);
   try {
     var mediaSite = {
       touristicSiteName: req.body.touristicSiteName,
+      imageName: req.body.imageName,
       typeOfMediaEntitled: req.body.typeOfMediaEntitled,
-      linkOfMedia: req.body.linkOfMedia,
-      dateOfPicture: req.body.dateOfPicture,
+      dateOfPicture: new Date(),
     };
+    
 
-    var db = req.db;
-    var collection = db.get(collections);
+    // Vérifiez s'il y a un fichier téléchargé
+    if (req.file) {
+      // Lisez le fichier sous forme de données binaires (BLOB)
+      var imageFile = fs.readFileSync(req.file.path);
+
+      // Supprimez le fichier téléchargé après l'avoir lu en tant que BLOB
+      fs.unlinkSync(req.file.path);
+
+      // Enregistrez les données binaires (BLOB) dans la base de données
+      mediaSite.imageData = imageFile;
+    }
 
     let duplMediaSite = await collection.findOne({
-      linkOfMedia: req.body.linkOfMedia,
+      imageName: req.body.imageName,
     });
 
     if (duplMediaSite) {
-      res.status(400).json({ error: "Photo ou video existe déja" });
+      res.status(400).json({ error: "Photo ou vidéo existe déjà" });
     } else {
       collection.insert(mediaSite, function (e, docs) {
         res.json(docs);
