@@ -17,7 +17,6 @@ exports.insertProgram = async function (req, res) {
       touristicDesc: req.body.touristicDesc,
       startDate: req.body.startDate,
       endDate: req.body.endDate,
-      activity: req.body.activity,
       createdAt: new Date(),
     };
 
