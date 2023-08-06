@@ -29,7 +29,7 @@ exports.getAllCommentTouristicSite = async function (req, res) {
 
     collection.find(
       {
-        touristicSiteName: req.params.touristicSiteName,
+        touristicSiteName: req.query.touristicSiteName,
       },
       {},
       function (e, docs) {
