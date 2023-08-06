@@ -8,14 +8,14 @@ exports.insertComment = async function (req, res) {
       touristicSiteName: req.body.touristicSiteName,
       content: req.body.content,
       status: req.body.status,
-      dateOfComment: newDate,
+      dateOfComment: new Date(),
     };
 
     var db = req.db;
     var collection = db.get(collections);
 
     collection.insert(comment, function (e, docs) {
-      res.status(200).json(docs);
+      res.status(200).json({comment : docs});
     });
   } catch (e) {
     res.status(400).json({ e });

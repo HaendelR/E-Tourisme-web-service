@@ -5,7 +5,7 @@ const {
   getAllCommentTouristicSite,
 } = require("../models/comment");
 
-router.post("/addChargeDetail", async function (req, res) {
+router.post("/addComment", async function (req, res) {
   insertComment(req, res);
 });
 
