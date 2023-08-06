@@ -17,7 +17,6 @@ exports.insertMediaSite = async function (req, res) {
   try {
     var mediaSite = {
       touristicSiteName: req.body.touristicSiteName,
-      imageName: req.body.imageName,
       typeOfMediaEntitled: req.body.typeOfMediaEntitled,
       dateOfPicture: new Date(),
     };
@@ -34,6 +33,7 @@ if (mediaSite.typeOfMediaEntitled === "img") {
 
     // Enregistrez les données binaires (BLOB) dans la base de données
     mediaSite.imageData = imageFile;
+    mediaSite.imageName= req.body.imageName;
   }
 } else if (mediaSite.typeOfMediaEntitled === "video") {
   // Insérer une vidéo
@@ -46,6 +46,7 @@ if (mediaSite.typeOfMediaEntitled === "img") {
 
     // Enregistrez les données binaires (BLOB) dans la base de données
     mediaSite.videoData = videoFile;
+    mediaSite.videoName= req.body.videoName;
   }
 } else {
   // Type de média non valide
