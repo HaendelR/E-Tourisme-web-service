@@ -19,7 +19,7 @@ router.post("/login", async function (req, res) {
   login(req, res);
 });
 
-router.get("/me", async function (req, res) {
+router.post("/me", async function (req, res) {
   userconnecte(req, res);
 });
 
