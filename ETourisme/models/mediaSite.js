@@ -21,19 +21,38 @@ exports.insertMediaSite = async function (req, res) {
       typeOfMediaEntitled: req.body.typeOfMediaEntitled,
       dateOfPicture: new Date(),
     };
+
+    // Vérifiez le type de média
+if (mediaSite.typeOfMediaEntitled === "img") {
+  // Insérer une image
+  if (req.file) {
+    // Lisez le fichier sous forme de données binaires (BLOB)
+    var imageFile = fs.readFileSync(req.file.path);
+
+    // Supprimez le fichier téléchargé après l'avoir lu en tant que BLOB
+    fs.unlinkSync(req.file.path);
+
+    // Enregistrez les données binaires (BLOB) dans la base de données
+    mediaSite.imageData = imageFile;
+  }
+} else if (mediaSite.typeOfMediaEntitled === "video") {
+  // Insérer une vidéo
+  if (req.file) {
+    // Lisez le fichier sous forme de données binaires (BLOB)
+    var videoFile = fs.readFileSync(req.file.path);
+
+    // Supprimez le fichier téléchargé après l'avoir lu en tant que BLOB
+    fs.unlinkSync(req.file.path);
+
+    // Enregistrez les données binaires (BLOB) dans la base de données
+    mediaSite.videoData = videoFile;
+  }
+} else {
+  // Type de média non valide
+  res.status(400).json({ error: "Type de média non valide. Utilisez 'img' ou 'video'." });
+}
     
 
-    // Vérifiez s'il y a un fichier téléchargé
-    if (req.file) {
-      // Lisez le fichier sous forme de données binaires (BLOB)
-      var imageFile = fs.readFileSync(req.file.path);
-
-      // Supprimez le fichier téléchargé après l'avoir lu en tant que BLOB
-      fs.unlinkSync(req.file.path);
-
-      // Enregistrez les données binaires (BLOB) dans la base de données
-      mediaSite.imageData = imageFile;
-    }
 
     let duplMediaSite = await collection.findOne({
       imageName: req.body.imageName,
