@@ -53,11 +53,10 @@ if (mediaSite.typeOfMediaEntitled === "img") {
   res.status(400).json({ error: "Type de média non valide. Utilisez 'img' ou 'video'." });
 }
     
-
-
     let duplMediaSite = await collection.findOne({
       imageName: req.body.imageName,
     });
+
 
     if (duplMediaSite) {
       res.status(400).json({ error: "Photo ou vidéo existe déjà" });
